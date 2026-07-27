@@ -70,7 +70,7 @@ impl Args {
     }
 }
 
-/// An imported model never install lass than a bootable system
+/// An imported model never installs less than a bootable system
 fn ensure_mandatory(model: &mut Model) -> Result<(), clap::Error> {
     let mut packages: BTreeSet<String> = model.software.packages.iter().cloned().collect();
     packages.extend(mandatory(&model.software.selection).map_err(|e| invalid_value(e.to_string()))?);

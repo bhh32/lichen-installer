@@ -24,11 +24,11 @@ service Install {
 
 // Request message for WriteSystemModel
 message WriteSystemModelRequest {
-  // Partion device holding the target root filesystem
+  // Partition device holding the target root filesystem
   string root_device = 1;
 
   // Full text of the system-model.kdl document
-  string contents = 2;
+  string system_model = 2;
 
   // Full text of the install-model.kdl record (installer superset)
   string install_model = 3;
@@ -47,7 +47,7 @@ message DiscoveredModel {
   string contents = 2;
 }
 
-// Response message for DiscoverySystemModels
+// Response message for DiscoverSystemModels
 message DiscoverSystemModelsResponse {
   repeated DiscoveredModel models = 1;
 }

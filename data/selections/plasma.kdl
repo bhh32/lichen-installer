@@ -21,7 +21,7 @@ selection name="plasma" summary="KDE Plasma Desktop" description="The KDE deskto
         kclock
         kde-cli-tools
         kde-gtk-config
-        kdegraphics-thumbnailers
+        kdegraphics-thumbnails
         kdepim-addons
         kdeplasma-addons
         kinfocenter

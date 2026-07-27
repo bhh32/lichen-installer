@@ -30,7 +30,7 @@ selection name="gnome" summary="GNOME Desktop" description="Recommended for most
         "binary(starship)"
         gnome-backgrounds
         gnome-desktop-defaults
-        gst-thumbnailers
+        gst-thumbnails
         loupe
         "sysbinary(gdm)"
     }
