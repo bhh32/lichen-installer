@@ -32,6 +32,7 @@ const FILESYSTEM_CHOICES: &[(&str, &str, &str)] = &[
 const FILESYSTEM_PACKAGES: &[(&str, &[&str])] = &[
     ("btrfs", &["btrfs-progs", "udisks-btrfs"]),
     ("bcachefs", &["bcachefs-tools", "bcachefs-module-stable"]),
+    ("xfs", &["xfsprogs"]),
 ];
 
 pub async fn run(info: &OsInfo, installer: &Installer, model: &mut Model) -> Result<(), StepError> {
