@@ -582,12 +582,18 @@ fn run(command: &mut Command) -> Result<(), Status> {
 ///
 /// bcachefs has no fsck helper following the fsck(8) exit protocol, so
 /// any non-zero pass drops the boot into emergency mode on a healthy
-/// filesystem. vfat carries no UNIX permissions, so without an explicit
+/// filesystem.
+/// xfs commits metadata through in-memory log buffers; logbsize=256k
+/// enlarges each on so metadata-heavy workloads can enqueue more
+/// operations per journal write, for a little RAM per write.
+///vfat carries no UNIX permissions, so without an explicit
 /// umask the ESP and XBOOTLDR contents are world readable.
 fn fstab_params(mountpoint: &str, fstype: &str, subvol: Option<&str>) -> (String, u8) {
     let (base, pass) = match (mountpoint, fstype) {
         (_, "btrfs") => ("defaults", 0u8),
         ("/", "bcachefs") => ("defaults", 0),
+        ("/", "xfs") => ("defaults,logbsize=256k", 1),
+        (_, "xfs") => ("defaults,logbsize=256k", 2),
         ("/", _) => ("defaults", 1),
         (_, "vfat") => ("defaults,umask=0077", 0),
         _ => ("defaults", 2),
