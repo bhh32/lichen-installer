@@ -18,7 +18,7 @@ use protocols::lichen::storage::{
     types::{self, operating_system::Kind},
 };
 use provisioning::{Filesystem, PartitionRole, Plan, Provisioner, StrategyDefinition};
-use std::collections::HashMap;
+use std::{collections::HashMap, time::Duration};
 use tonic::Status;
 use tracing::info;
 
@@ -102,6 +102,12 @@ pub(crate) fn apply_strategy(
 
     for (device, filesystem) in &plan.filesystems {
         info!(device = %device.display(), filesystem = ?filesystem, "creating filesystem");
+
+        // The partition /dev node is created asynchronously by udev after
+        // BLKPG. Wait briefly so mkfs doesn't race and fail with ENOENT.
+        if let Some(name) = device.file_name().and_then(|name| name.to_str()) {
+            let _ = disks::wait_for_dev_node(name, Duration::from_secs(5));
+        }
 
         // DiskWriter zeroes only the first 2MiB of a new partition. btrfs, xfs, and
         // bcachefs keep superblock past that, and an unforced mkfs refuses to run
@@ -263,6 +269,11 @@ fn filesystem_to_proto(filesystem: &Filesystem) -> types::Filesystem {
     match filesystem {
         Filesystem::Fat32 { label, volume_id } => types::Filesystem {
             filesystem_type: "fat32".to_string(),
+            label: label.clone(),
+            uuid: volume_id.map(|id| id.to_string()),
+        },
+        Filesystem::Fat16 { label, volume_id } => types::Filesystem {
+            filesystem_type: "fat16".to_string(),
             label: label.clone(),
             uuid: volume_id.map(|id| id.to_string()),
         },
