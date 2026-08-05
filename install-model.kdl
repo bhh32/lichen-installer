@@ -1,0 +1,155 @@
+install-model {
+    strategy whole_disk_btrfs
+    disk "/dev/nvme1n1"
+    locale en_US.UTF-8
+    timezone "America/Los_Angeles"
+    desktop cosmic
+    installed "2026-07-30T17:14:42.626252911+00:00"
+    accounts {
+        root hash="$6$5U/wNXni/dM9Oq71$Rs4/1eQPHjl5eB9.gpYLiYdXBinUpMjVXKs/2IXLzGta1HIsYOJhsawcJtZL2DF0ewP5NyhUG6MM.c71DKMmb/"
+        user name=bryan realname="Bryan Hyland" hash="$6$VuxESys2wLeBYjuy$Ph5c3qRzZULvPpvEQqWF8JUnXmRRar3lwhSfJ2nA94LrFwUsWeL5aRk0mwXfxNubMndArd3G6D0e4v0xsL49v/"
+    }
+    system-model {
+        repositories {
+            unstable {
+                description "AerynOS unstable package stream"
+                base-uri "https://cdn.aerynos.dev/"
+                version "stream/unstable"
+                priority 0
+            }
+        }
+        packages {
+            bash
+            bash-completion
+            boulder
+            btrfs-progs
+            build-essential
+            ca-certificates
+            cosmic-applets
+            cosmic-applibrary
+            cosmic-bg
+            cosmic-comp
+            cosmic-desktop
+            cosmic-edit
+            cosmic-files
+            cosmic-greeter
+            cosmic-icons
+            cosmic-idle
+            cosmic-initial-setup
+            cosmic-launcher
+            cosmic-monitor
+            cosmic-notifications
+            cosmic-osd
+            cosmic-panel
+            cosmic-player
+            cosmic-randr
+            cosmic-screenshot
+            cosmic-session
+            cosmic-settings
+            cosmic-settings-daemon
+            cosmic-store
+            cosmic-term
+            cosmic-wallpapers
+            cosmic-workspaces
+            curl
+            dash
+            dbus
+            dbus-broker
+            dracut
+            e2fsprogs
+            f2fs-tools
+            fastfetch
+            file
+            findutils
+            firefox
+            flatpak
+            font-firacode
+            font-hack
+            font-noto
+            font-noto-emoji
+            gawk
+            git
+            grep
+            gzip
+            helix
+            intel-microcode
+            iproute2
+            iputils
+            kbd
+            kmod
+            less
+            liberation-fonts-ttf
+            libva-intel-hybrid-driver
+            libva-intel-media-driver
+            linux-desktop
+            linux-firmware
+            linux-firmware-amd
+            linux-firmware-amd-graphics
+            linux-firmware-amd64-microcode
+            linux-firmware-atheros
+            linux-firmware-brcm80211
+            linux-firmware-cirrus
+            linux-firmware-intel
+            linux-firmware-intel-graphics
+            linux-firmware-intel-misc
+            linux-firmware-intel-sound
+            linux-firmware-iwlwifi
+            linux-firmware-libertas
+            linux-firmware-mediatek
+            linux-firmware-misc
+            linux-firmware-nvidia
+            linux-firmware-nvidia-graphics
+            linux-firmware-realtek
+            linux-firmware-ti-connectivity
+            linux-pam
+            linux-stable
+            lvm2
+            mesa-dri-drivers
+            mesa-libegl
+            mesa-libgl
+            mesa-vulkan-drivers
+            moss
+            nano
+            ncurses
+            networkmanager
+            networkmanager-bluetooth
+            networkmanager-wifi
+            networkmanager-wwan
+            ntpd-rs
+            openssh
+            os-artwork
+            pipewire
+            plymouth
+            polkit
+            procps
+            python
+            screen
+            sed
+            shadow
+            sof-firmware
+            sudo
+            sudo-rs
+            systemd
+            systemd-boot
+            systemd-coredump
+            systemd-preset-aeryn
+            systemd-preset-aeryn-desktop
+            systemd-resolved
+            systemd-udev
+            tar
+            tzdata
+            udisks-btrfs
+            unzip
+            util-linux
+            uutils-coreutils
+            wget
+            which
+            wireplumber
+            xdg-desktop-portal-cosmic
+            xdg-desktop-portal-gtk
+            xfsprogs
+            zstd
+            zulip-desktop
+        }
+    }
+}
